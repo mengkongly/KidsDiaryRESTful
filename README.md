@@ -3,7 +3,7 @@
 Kids Diary App is a RESTful API that was built using Java Spring technologies. This is a project to finish
 Advanced Java course.
 
-# Awesome Maintainers
+# Maintainers
 
 - Touch Nguonchhay
 - Tes Putthira
@@ -26,6 +26,8 @@ Advanced Java course.
 # Starting up server
 	
 	mvn clean jetty:run
+
+Then open your browse with url `http://localhost:8080/index.html`.
 
 # RESTful API Document
 
