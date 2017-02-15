@@ -1,8 +1,6 @@
-/***/
 package com.rupp.spring.domain;
 
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.rupp.spring.utility.PasswordUtility;
 
@@ -16,7 +14,6 @@ public class User extends AbstractEntity {
 	
 	public static final String TABLE = "users";
 	
-    private Long id;
     private String username;
     private String password;
     private String accessToken;
@@ -30,8 +27,6 @@ public class User extends AbstractEntity {
     private int country;
     private int userType;
     private boolean isActivated;
-    private Date createdAt;
-    private Date deletedAt;
     
     public User() {}
     
