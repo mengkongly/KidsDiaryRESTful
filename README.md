@@ -3,7 +3,7 @@
 Kids Diary App is a RESTful API that was built using Java Spring technologies. This is a project to finish
 Advanced Java course.
 
-# Maintainers
+# Awesome Maintainers
 
 - Touch Nguonchhay
 - Tes Putthira
