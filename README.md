@@ -31,6 +31,10 @@ Then open your browse with url `http://localhost:8080/index.html`.
 
 # RESTful API Document
 
+	+ UserType
+
+		- List
+			* Request URL: `/api/usertypes/v1/all`
 
 
 Hope you can run this back end project successfully.

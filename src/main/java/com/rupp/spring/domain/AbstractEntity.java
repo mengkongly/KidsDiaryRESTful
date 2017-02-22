@@ -1,6 +1,5 @@
 package com.rupp.spring.domain;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -10,7 +9,6 @@ import java.util.Date;
  */
 
 public abstract class AbstractEntity {
-	public final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd H:m:s");
 	
 	private Long id;
 	private Date createdAt;
