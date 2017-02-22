@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Feb 11, 2017 at 03:26 PM
+-- Generation Time: Feb 22, 2017 at 07:49 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -32,9 +32,9 @@ CREATE TABLE `activities` (
   `icon` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `score` tinyint(2) NOT NULL DEFAULT '0',
   `note` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `is_activated` tinyint(2) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` datetime DEFAULT NULL
+  `isActivated` tinyint(2) NOT NULL DEFAULT '0',
+  `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -46,16 +46,16 @@ CREATE TABLE `activities` (
 CREATE TABLE `countries` (
 `id` int(11) NOT NULL,
   `name` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `dialing_code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `deleted_at` datetime DEFAULT NULL
+  `dialingCode` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `countries`
 --
 
-INSERT INTO `countries` (`id`, `name`, `dialing_code`, `created_at`, `deleted_at`) VALUES
+INSERT INTO `countries` (`id`, `name`, `dialingCode`, `createdAt`, `deletedAt`) VALUES
 (1, 'Cambodia', '+855', '2017-02-11 07:00:00', NULL);
 
 -- --------------------------------------------------------
@@ -68,10 +68,10 @@ CREATE TABLE `daily_activities` (
   `id` bigint(20) NOT NULL,
   `parent` bigint(20) NOT NULL,
   `child` bigint(20) NOT NULL,
-  `activity_date` datetime NOT NULL,
-  `is_approved` tinyint(2) NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` datetime DEFAULT NULL
+  `activityDate` datetime NOT NULL,
+  `isApproved` tinyint(2) NOT NULL DEFAULT '0',
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -83,12 +83,12 @@ CREATE TABLE `daily_activities` (
 CREATE TABLE `daily_activity_details` (
 `id` bigint(20) NOT NULL,
   `activity` bigint(20) NOT NULL,
-  `daily_activity` bigint(20) NOT NULL,
+  `dailyActivity` bigint(20) NOT NULL,
   `score` tinyint(2) NOT NULL DEFAULT '0',
-  `is_approved` tinyint(2) NOT NULL DEFAULT '0',
+  `isApproved` tinyint(2) NOT NULL DEFAULT '0',
   `note` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` datetime DEFAULT NULL
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -102,8 +102,8 @@ CREATE TABLE `families` (
   `mother` bigint(20) NOT NULL,
   `child` bigint(20) NOT NULL,
   `note` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `deleted_at` datetime DEFAULT NULL
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -116,19 +116,19 @@ CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
   `username` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `access_token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `loggedin_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `accessToken` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `loggedinDate` timestamp NULL DEFAULT NULL,
   `email` varchar(35) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `first_name` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  `firstName` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  `lastName` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `sex` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
   `birth_date` timestamp NULL DEFAULT NULL,
   `country` varchar(35) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_type` bigint(11) NOT NULL,
-  `is_activated` tinyint(2) NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` datetime DEFAULT NULL
+  `userType` bigint(11) NOT NULL,
+  `isActivated` tinyint(2) NOT NULL DEFAULT '0',
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -140,19 +140,19 @@ CREATE TABLE `users` (
 CREATE TABLE `user_types` (
   `id` int(11) NOT NULL,
   `type` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` datetime DEFAULT NULL
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user_types`
 --
 
-INSERT INTO `user_types` (`id`, `type`, `created_at`, `deleted_at`) VALUES
-(1, 'Wife', '0000-00-00 00:00:00', NULL),
-(2, 'Husband', '0000-00-00 00:00:00', NULL),
-(3, 'Child', '0000-00-00 00:00:00', NULL),
-(4, 'Adopter', '0000-00-00 00:00:00', NULL);
+INSERT INTO `user_types` (`id`, `type`, `createdAt`, `deletedAt`) VALUES
+(1, 'Wife', '2017-01-31 17:00:00', NULL),
+(2, 'Husband', '2017-01-31 17:00:00', NULL),
+(3, 'Child', '2017-01-31 17:00:00', NULL),
+(4, 'Adopter', '2017-01-31 17:00:00', NULL);
 
 --
 -- Indexes for dumped tables

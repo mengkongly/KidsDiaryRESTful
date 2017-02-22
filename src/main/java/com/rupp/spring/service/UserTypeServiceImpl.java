@@ -7,30 +7,30 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rupp.spring.dao.CategoryDao;
-import com.rupp.spring.domain.DCategory;
+import com.rupp.spring.dao.UserTypeDao;
+import com.rupp.spring.domain.UserType;
 import com.rupp.spring.domain.ResponseList;
 
-@Service("categorySevice")
-public class CategoryServiceImpl implements CategoryService {
-    private static final Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
+@Service("userTypeService")
+public class UserTypeServiceImpl implements UserTypeService {
+    private static final Logger logger = LoggerFactory.getLogger(UserTypeServiceImpl.class);
     
     @Autowired
-    private CategoryDao dao;
+    private UserTypeDao dao;
     
     @Override
-    public List<DCategory> list() {
+    public List<UserType> list() {
         return dao.list();
     }
 
     @Override
-    public DCategory get(Long id) {
+    public UserType get(Long id) {
         return dao.get(id);
     }
 
     @Override
-    public DCategory create(DCategory dCategory) {
-        return dao.create(dCategory);
+    public UserType create(UserType userType) {
+        return dao.create(userType);
     }
 
     @Override
@@ -39,16 +39,16 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public DCategory update(Long id, DCategory dCategory) {
+    public UserType update(Long id, UserType userType) {
         
         if (dao.get(id) == null) {
             return null;
         }
-        dCategory.setId(id);
-        return dao.update(dCategory);
+        userType.setId(id);
+        return dao.update(userType);
     }
     
-    public ResponseList<DCategory> getPage(int pagesize, String cursorkey) {
+    public ResponseList<UserType> getPage(int pagesize, String cursorkey) {
         logger.debug(" getPage limit : {} cursorkey : {}", pagesize, cursorkey);
         return dao.getPage(pagesize, cursorkey);
     }

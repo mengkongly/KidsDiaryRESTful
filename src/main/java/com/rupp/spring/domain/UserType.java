@@ -11,19 +11,18 @@ public class UserType extends AbstractEntity {
 	
 	public static final String TABLE = "user_types";
 	
-	private String name;
-	private String dialingCode;
+	private String type;
 	
 	public UserType() {}
-	public UserType(Long id, String name) {
+	public UserType(Long id, String type) {
 		super.setId(id);
-		setName(name);
+		setType(type);
 	}
 	
-	public String getName() {
-		return name;
+	public String getType() {
+		return type;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setType(String type) {
+		this.type = type;
 	}
 }
