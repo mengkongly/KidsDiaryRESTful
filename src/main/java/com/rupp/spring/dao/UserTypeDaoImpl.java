@@ -32,7 +32,7 @@ public class UserTypeDaoImpl implements UserTypeDao {
     }
     
     public int count() {
-        final String sql = "select count(*) from " + UserType.TABLE;
+        final String sql = "select count(*) from " + UserType.TABLE + " WHERE deletedAt IS NULL";
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
@@ -41,7 +41,7 @@ public class UserTypeDaoImpl implements UserTypeDao {
         if (offset == null) {
             offset = "0";
         }
-        final String sql = "select * from " + UserType.TABLE + " limit " + pagesize + " OFFSET " + offset;
+        final String sql = "select * from " + UserType.TABLE + " WHERE deletedAt IS NULL limit " + pagesize + " OFFSET " + offset;
         //List<UserType> list = this.jdbcTemplate.queryForList(sql,UserType.class);
         List<UserType> list = this.jdbcTemplate.query(sql, new RowMapper<UserType>() {
 

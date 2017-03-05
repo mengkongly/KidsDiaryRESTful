@@ -32,7 +32,7 @@ public class CountryDaoImpl implements CountryDao {
     }
     
     public int count() {
-        final String sql = "select count(*) from " + Country.TABLE;
+        final String sql = "select count(*) from " + Country.TABLE + " WHERE deletedAt IS NULL";
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
@@ -103,9 +103,9 @@ public class CountryDaoImpl implements CountryDao {
         return page;
     }
     /**
-     * Returns list of user_types from dummy database.
+     * Returns list of countries from dummy database.
      * 
-     * @return list of categories
+     * @return list of countries
      */
     public List<Country> list() {
         final String sql = "select * from " + Country.TABLE;
@@ -126,8 +126,8 @@ public class CountryDaoImpl implements CountryDao {
     }
 
     /**
-     * @param id UserType id
-     * @return UserType object for given id
+     * @param id Country id
+     * @return Country object for given id
      */
     public Country get(Long id) {
         final String sql = "select * from " + Country.TABLE + " where id = ?";
@@ -154,10 +154,10 @@ public class CountryDaoImpl implements CountryDao {
     }
 
     /**
-     * Create new UserType in dummy database. Updates the id and insert new UserType in list.
+     * Create new Country in dummy database. Updates the id and insert new Country in list.
      * 
-     * @param UserType UserType object
-     * @return UserType object with updated id
+     * @param Country Country object
+     * @return Country object with updated id
      */
     public Country create(Country country) {
         final String sql = "INSERT INTO " + Country.TABLE + " (name,dialingCode) VALUES (?,?)";
@@ -166,8 +166,8 @@ public class CountryDaoImpl implements CountryDao {
     }
 
     /**
-     * @param id the UserType id
-     * @return id of deleted UserType object
+     * @param id the Country id
+     * @return id of deleted Country object
      */
     public Long delete(Long id) {
         final String sql = "Delete from " + Country.TABLE + " where id =?";
@@ -176,10 +176,10 @@ public class CountryDaoImpl implements CountryDao {
     }
 
     /**
-     * Update the UserType object for given id in dummy database. If UserType not exists, returns null
+     * Update the Country object for given id in dummy database. If Country not exists, returns null
      * 
-     * @param UserType
-     * @return UserType object with id
+     * @param Country
+     * @return Country object with id
      */
     public Country update(Country country) {
 

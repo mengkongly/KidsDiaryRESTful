@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Feb 22, 2017 at 07:49 PM
+-- Generation Time: Mar 05, 2017 at 11:02 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -56,7 +56,7 @@ CREATE TABLE `countries` (
 --
 
 INSERT INTO `countries` (`id`, `name`, `dialingCode`, `createdAt`, `deletedAt`) VALUES
-(1, 'Cambodia', '+855', '2017-02-11 07:00:00', NULL);
+(1, 'Cam', ' 88', '2017-02-23 16:15:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -113,23 +113,31 @@ CREATE TABLE `families` (
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL,
+`id` int(11) NOT NULL,
   `username` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `accessToken` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `loggedinDate` timestamp NULL DEFAULT NULL,
+  `accessToken` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `loggedinDate` datetime DEFAULT NULL,
   `email` varchar(35) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `firstName` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `lastName` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `sex` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
-  `birth_date` timestamp NULL DEFAULT NULL,
-  `country` varchar(35) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `userType` bigint(11) NOT NULL,
+  `birthDate` date DEFAULT NULL,
+  `country` int(11) DEFAULT NULL,
+  `userType` int(11) NOT NULL,
   `isActivated` tinyint(2) NOT NULL DEFAULT '0',
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deletedAt` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `accessToken`, `loggedinDate`, `email`, `phone`, `firstName`, `lastName`, `sex`, `birthDate`, `country`, `userType`, `isActivated`, `createdAt`, `deletedAt`) VALUES
+(4, 'nguonchhay', '99-104-104-97-121-49-50-51-52-53', NULL, NULL, 'nguonchhay.touch@gmail.com', '012', 'Nguonchhay', 'Touch', 'M', '1991-05-06', 1, 1, 0, '2017-03-02 11:15:12', NULL),
+(5, 'nguonchhay', '99-104-104-97-121-49-50-51-52-53', NULL, NULL, 'nguonchhay.touch@gmail.com', '012', 'Nguonchhay', 'Touch', 'M', '1991-05-06', 1, 1, 0, '2017-03-02 11:17:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -208,6 +216,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 ALTER TABLE `daily_activity_details`
 MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

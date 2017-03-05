@@ -1,7 +1,10 @@
 package com.rupp.spring.domain;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.rupp.spring.utility.PasswordUtility;
 
 /**
@@ -23,17 +26,22 @@ public class User extends AbstractEntity {
     private String firstName;
     private String lastName;
     private String sex;
+    
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
+    
     private int country;
     private int userType;
     private boolean isActivated;
     
     public User() {}
     
-    public User(Long id, String username, String password, String email, String phone, String firstName, String lastName, String sex, Date brthDate, int country, int userTYpe, boolean isActivated) throws UnsupportedEncodingException {
+    public User(Long id, String username, String password, String email, String phone, String firstName, String lastName, String sex, Date birthDate, int country, int userType, boolean isActivated) {
     	super.setId(id);
     	setUsername(username);
     	setPassword(password);
+    	setAccessToken("");
     	setEmail(email);
     	setPhone(phone);
     	setFirstName(firstName);
@@ -56,13 +64,13 @@ public class User extends AbstractEntity {
 	public String getPassword() {
 		return password;
 	}
-	
-	public String getDecryptPassword() throws UnsupportedEncodingException {
-		return PasswordUtility.decrypt(password);
-	}
 
-	public void setPassword(String password) throws UnsupportedEncodingException {
+	public void setPassword(String password) {
 		this.password = PasswordUtility.encrypt(password);
+	}
+	
+	public void setEncryptPassword(String password) {
+		this.password = password;
 	}
 
 	public String getAccessToken() {
@@ -111,6 +119,10 @@ public class User extends AbstractEntity {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getFullname() {
+		return lastName + " " + firstName;
 	}
 
 	public String getSex() {

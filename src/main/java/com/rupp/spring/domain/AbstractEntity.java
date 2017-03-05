@@ -10,7 +10,7 @@ import java.util.Date;
 
 public abstract class AbstractEntity {
 	
-	private Long id;
+	private Long id = 0L;
 	private Date createdAt;
 	private Date deletedAt;
 	

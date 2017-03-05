@@ -1,7 +1,5 @@
 package com.rupp.spring.utility;
 
-import java.io.UnsupportedEncodingException;
-
 /**
  * @author Nguonchhay <a href='mailto:tnguonchhay@gmail.com'> Touch Nguonchhay </a>
  * @version $id$ - $Revision$
@@ -20,7 +18,7 @@ public class PasswordUtility {
 	     for (byte ch : password.getBytes()) {
 	    	 convert.append(ch).append(PasswordUtility.SEPARATOR);
 	     }
-	     return convert.toString();
+	     return convert.substring(0, convert.length() - 1);
 	}
 	
 	/**
@@ -30,8 +28,8 @@ public class PasswordUtility {
 	public static final String decrypt(String password) {
 		StringBuffer convert = new StringBuffer();
 		String[] parts = password.split(PasswordUtility.SEPARATOR);
-		for (int i = 0; i < parts.length; i++) {
-			convert.append((char)parts[i].charAt(i));
+		for (String str : parts) {
+			convert.append((char) Integer.parseInt(str));
 		}
 		return convert.toString();
 	}

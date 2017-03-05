@@ -10,6 +10,6 @@ public interface CountryService {
     Country get(Long id);
     Country create(Country country);
     Long delete(Long id);
-    Country update(Long id, Country userType);
+    Country update(Long id, Country country);
     ResponseList<Country> getPage(int pagesize, String cursorkey);
 }
