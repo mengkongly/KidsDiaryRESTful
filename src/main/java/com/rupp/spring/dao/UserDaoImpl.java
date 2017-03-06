@@ -166,7 +166,9 @@ public class UserDaoImpl implements UserDao {
                     domain.setUsername(rs.getString("username"));
                     domain.setEncryptPassword(rs.getString("password"));               
                     domain.setAccessToken(rs.getString("accessToken"));
-                    domain.setLoggedinDate(new Date(rs.getTimestamp("loggedinDate").getTime()));
+                    if (rs.getTimestamp("loggedinDate") != null) {
+                    	domain.setLoggedinDate(new Date(rs.getTimestamp("loggedinDate").getTime()));
+                    }
                     domain.setEmail(rs.getString("email"));
                     domain.setPhone(rs.getString("phone"));
                     domain.setFirstName(rs.getString("firstName"));
