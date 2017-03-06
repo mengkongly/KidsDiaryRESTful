@@ -56,12 +56,12 @@ public class Activity extends AbstractEntity {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
 	public boolean isActivated() {
 		return isActivated;
 	}
-	
 	public void setActivated(boolean isActivated) {
 		this.isActivated = isActivated;
 	}
+	
+	
 }

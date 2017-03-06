@@ -20,7 +20,7 @@
     <database.driver>com.mysql.jdbc.Driver</database.driver>
     <database.url>jdbc:mysql://localhost:3306/kidsdiary?autoReconnect=true</database.url>
     <database.username>root</database.username>
-    <database.password>12354</database.password>
+    <database.password></database.password>
     
     <spring.version>4.3.5.RELEASE</spring.version>
     
